@@ -15,10 +15,8 @@ stringsScript.onload = function () {
         }
     }
 
-    // Create the User object
     window.user = new User();
 
-    // Set HTML text
     document.getElementById("question").textContent =
         user.GetText("question");
 

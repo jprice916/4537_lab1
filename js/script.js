@@ -15,6 +15,7 @@ class InputValidator {
 
         this.value = Number(this.input.value);
 
+        //Validates
         if (this.value >= this.min && this.value <= this.max) {
 
             const maker = new SquareMaker(this.value);
@@ -60,8 +61,7 @@ class SquareMaker {
             square.style.width = "10em";
             square.style.height = "5em";
 
-            square.style.backgroundColor =
-                this.ColorChooser();
+            square.style.backgroundColor = this.ColorChooser();
 
             square.textContent = Sqr + 1;
 
@@ -92,16 +92,12 @@ class Shuffler {
 
         const boundary = document.getElementById("boundary");
 
-        const squares =
-            boundary.querySelectorAll(".square");
+        const squares = boundary.querySelectorAll(".square");
 
-        // Shuffle the squares
-        for (
-            let shuffles = 0;
-            shuffles < this.ShuffleNum;
-            shuffles++
-        ) {
+        // Shuffles multiple times
+        for (let shuffles = 0; shuffles < this.ShuffleNum; shuffles++) {
 
+            //randomize the pos of each square
             setTimeout(() => {
 
                 for (let square of squares) {
