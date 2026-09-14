@@ -1,8 +1,8 @@
 /* I used AI for the style */
 #boundary {
     position: relative;
-    width: 800px;
-    height: 500px;
+    width: 100vw;
+    height: 90vh;
 
 
     display: flex;
