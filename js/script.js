@@ -1,12 +1,10 @@
-//Constants
-const MILLISECONDS_PER_SECOND = 1000;
-const SHUFFLE_INTERVAL_MS = 2000;
-const COLOR_CHANNEL_MAX = 256;
+const SQR_OFFSET = 1;
+const NEXT_NUMBER = 1;
+const RGB_COLOR_RANGE = 256;
 const SQUARE_WIDTH_EM = 10;
 const SQUARE_HEIGHT_EM = 5;
-const LOOP_START_INDEX = 0;
-const SQUARE_NUMBER_OFFSET = 1;
-const FIRST_SQUARE_NUMBER = 1;
+const SHUFFLE_INTERVAL_MS = 2000;
+
 
 class InputValidator {
 
@@ -20,7 +18,7 @@ class InputValidator {
 
         const boundary = document.getElementById("boundary");
 
-        // Remove the previous game
+        // Remove the previous game 
         boundary.innerHTML = "";
 
         this.value = Number(this.input.value);
@@ -43,6 +41,7 @@ class InputValidator {
 
 
 class SquareMaker {
+    TimeConversion = 1000;
 
 
     constructor(SqrNum) {
@@ -51,9 +50,9 @@ class SquareMaker {
 
     ColorChooser() {
 
-        const r = Math.floor(Math.random() * COLOR_CHANNEL_MAX);
-        const g = Math.floor(Math.random() * COLOR_CHANNEL_MAX);
-        const b = Math.floor(Math.random() * COLOR_CHANNEL_MAX);
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
 
         return `rgb(${r}, ${g}, ${b})`;
     }
@@ -62,19 +61,19 @@ class SquareMaker {
 
         const boundary = document.getElementById("boundary");
 
-        const WaitTime = this.SqrNum * this.MILLISECONDS_PER_SECOND;
+        const WaitTime = this.SqrNum * this.TimeConversion;
 
         // Create the squares
         for (let Sqr = 0; Sqr < this.SqrNum; Sqr++) {
 
             let square = document.createElement("div");
 
-            square.style.width = `${SQUARE_WIDTH_EM}em`;
-            square.style.height = `${SQUARE_HEIGHT_EM}em`;
+            square.style.width = "10em";
+            square.style.height = "5em";
 
             square.style.backgroundColor = this.ColorChooser();
 
-            square.textContent = Sqr + SQUARE_NUMBER_OFFSET;
+            square.textContent = Sqr + SQR_OFFSET;
 
             square.className = "square";
 
@@ -152,7 +151,7 @@ class MemoryGame {
 
         this.SqrNum = SqrNum;
 
-        this.nextNumber = FIRST_SQUARE_NUMBER;
+        this.nextNumber = NEXT_NUMBER;
 
         this.gameOver = false;
     }
